@@ -147,43 +147,27 @@ Screenshots of the project using Postman
 
 <!-- ROADMAP -->
 ## Roadmap
-UserSection
+Customer Section
 
-- [x] User Authentication:a.Users will be able to create an account, log in, and log out.
+- [x] Registration & Login.
 
-- [x] Newly registered users should receive an email upon registration.
+- [x] Create account & Set Budget.
 
-- [x] Blog Posts:a.Users can perform CRUD operations in their own blog posts.
+- [x] Deposit, Withdraw and Transfer.
 
-- [x] Users can view the list & details of all blog posts, including blogs posted byother users.
+- [x] List Accounts and View Account Statements.
 
-- [x] Users should be able to upload image attachments with the blog.
+- [x] Apply for Loan and View Status.
 
-- [x] A blog post should have a title, content, created time & updated time. The restof the fields should be added as per requirement.
+- [x] Repay Loan.
 
-- [x] Users can add comments to any posts.
+- [x] Get Budget Alerts via Email and Use Expense categorization tools.
 
-- [x] A user should be able to see all the comments that are posted under a blogpost.
-
-- [x] Only the author of the comment will be allowed to edit or delete thecomments.
-
-- [x] The created time & updated time of the comment should be saved.
-
- AdminSection
+ Staff Section
  
-- [x] AdminSection1.Authentication:Admins will be able to log in and log out.
+- [x] Register & Login.
 
-- [x] A new admin user can only be registered by another authenticated adminuser. 
+- [x] View Accounts & Loans. 
 
-- [x] Blog Posts:Admins can view the list & details of all blog posts.
+- [x] Approve Loans.
 
-- [x] Admins should be able to delete blog posts.
-
-- [x] Comments:Admins can view the list of all comments under a post.
-
-- [x] Admins should be able to delete comments.
-
-
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
