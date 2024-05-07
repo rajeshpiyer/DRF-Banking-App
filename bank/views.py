@@ -292,7 +292,7 @@ class WithdrawAPIView(APIView):
         #Fetching Budget
         budget = MonthlyBudget.objects.get(account=account)
         if budget:
-            if total_expenditure_amount > budget:
+            if total_expenditure_amount > budget.budget:
                 #--------Email Alert-----------------------------------------------
                 sender = "prajeshiyer@gmail.com"
                 recipient = [request.user.email]
@@ -385,7 +385,7 @@ class TransferAPIView(APIView):
         #Fetching Budget
         budget = MonthlyBudget.objects.get(account=from_account)
         if budget:
-            if total_expenditure_amount > budget:
+            if total_expenditure_amount > budget.budget:
                 #--------Email Alert-----------------------------------------------
                 sender = "prajeshiyer@gmail.com"
                 recipient = [request.user.email]
@@ -554,6 +554,9 @@ class LoanRepaymentAPIView(APIView):
         except Loan.DoesNotExist:
             return Response({"error": "Loan not found or does not belong to the user."}, status=status.HTTP_404_NOT_FOUND)
         
+        if to_loan.status!= 'Active':
+            return Response({"error": "Loan is yet to Approve"}, status=status.HTTP_403_FORBIDDEN)
+        
         amount = int(data.get('amount'))
 
         if amount <= 0:
@@ -572,7 +575,7 @@ class LoanRepaymentAPIView(APIView):
             sender = "prajeshiyer@gmail.com"
             recipient = [request.user.email]
             subject_to_applicant = "Repayment Recieved"
-            message_to_applicant = "Repayment of"+ str(amount) +" recieved for "+to_loan.loan_type.name+" : "+to_loan.id
+            message_to_applicant = "Repayment of"+ str(amount) +" recieved for "+to_loan.loan_type.name+" : "+str(to_loan.id)
             send_mail(subject_to_applicant, message_to_applicant, sender, recipient)
             #--------Email Alert-----------------------------------------------
 
@@ -612,7 +615,7 @@ class LoanRepaymentAPIView(APIView):
             #Fetching Budget
             budget = MonthlyBudget.objects.get(account=account)
             if budget:
-                if total_expenditure_amount > budget:
+                if total_expenditure_amount > budget.budget:
                     #--------Email Alert-----------------------------------------------
                     sender = "prajeshiyer@gmail.com"
                     recipient = [request.user.email]
